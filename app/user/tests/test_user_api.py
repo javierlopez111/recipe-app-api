@@ -8,6 +8,7 @@ from rest_framework import status
 CREATE_USER_URL = reverse('user:create')
 TOKEN_URL = reverse('user:token')
 
+
 def create_user(**params):
     """Create and return a new user."""
     return get_user_model().objects.create_user(**params)
@@ -65,7 +66,7 @@ class PublicUserApiTests(TestCase):
 
     def test_create_token_for_user(self):
         """Test generate token for valid creds"""
-        user_details ={
+        user_details = {
             'name': 'Test',
             'email': 'test@example.com',
             'password': 'test-user-password123',
@@ -73,7 +74,7 @@ class PublicUserApiTests(TestCase):
 
         create_user(**user_details)
 
-        payload =  {
+        payload = {
             'email': user_details['email'],
             'password': user_details['password']
         }
